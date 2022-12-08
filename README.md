@@ -49,3 +49,4 @@ A:
     - DOCKER_HUB_TOKEN: token som nettopp ble opprettet
 Konklusjon: Workflowen feilet fordi den manglet secrets med login til dockerhub.
 
+### Oppgave 3
