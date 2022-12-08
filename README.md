@@ -32,7 +32,7 @@ A:
 ---
 
 ## Del 2
-### oppgave 3
+### Oppgave 3
 1. Gå inn på "Settings" -> "Branches" -> "Add branch protection rule"  
 3. Skriv "main" under "Branch name pattern"
 4. Kryss av "Require a pull request before merging"
@@ -40,3 +40,10 @@ A:
 6. Sett "Required number of approvals before merging" til "1"
 7. Kryss av "Require status checks to pass before merging"
 8. Søk etter og legg til "build" fra input-feltet under
+
+## del 3
+### Oppgave 1
+1. Opprett Access Token på Dockerhub
+2. Opprett secrets i github repoet:
+    - DOCKER_HUB_USERNAME: brukernavn på dockerhub
+    - DOCKER_HUB_TOKEN: token som nettopp ble opprettet
