@@ -47,3 +47,5 @@ A:
 2. Opprett secrets i github repoet:
     - DOCKER_HUB_USERNAME: brukernavn på dockerhub
     - DOCKER_HUB_TOKEN: token som nettopp ble opprettet
+Konklusjon: Workflowen feilet fordi den manglet secrets med login til dockerhub.
+
