@@ -1,15 +1,21 @@
 package no.shoppifly;
 
+import io.micrometer.core.instrument.Gauge;
+import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.ApplicationListener;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController()
-public class ShoppingCartController {
+public class ShoppingCartController implements ApplicationListener<ApplicationReadyEvent> {
 
     @Autowired
     private final CartService cartService;
+
+    private MeterRegistry meterRegistry;
 
     public ShoppingCartController(CartService cartService) {
         this.cartService = cartService;
@@ -51,5 +57,11 @@ public class ShoppingCartController {
         return cartService.getAllsCarts();
     }
 
+    @Override
+    public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
 
+        // Verdi av total
+        Gauge.builder("account_count", cartService,
+                c -> c.getAllsCarts().size()).register(meterRegistry);
+    }
 }
