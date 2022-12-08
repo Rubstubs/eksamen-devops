@@ -2,6 +2,7 @@
 # Also, I can't get it to run automatically - it can only be triggered from the UI. Shouldn't it run on every commit
 # or something?
 # Jim, you imbecile!
+# Testing this!
 name: CI pipeline
 on:
   pull_request:
