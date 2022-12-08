@@ -50,3 +50,4 @@ A:
 Konklusjon: Workflowen feilet fordi den manglet secrets med login til dockerhub.
 
 ### Oppgave 3
+Opprett et AWS ECR repository
