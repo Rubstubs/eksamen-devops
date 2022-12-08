@@ -1,6 +1,6 @@
 # eksamen-devops
 
-Del 1 DevOps-prinsipper
+## Del 1 DevOps-prinsipper
 
 ---
 Q: Hva er utfordringene med dagens systemutviklingsprosess -
@@ -30,3 +30,13 @@ redusere eller fjerne risiko ved hyppige leveraner.
 A:
 
 ---
+
+## Del 2
+### oppgave 3
+1. Gå inn på "Settings" -> "Branches" -> "Add branch protection rule"  
+3. Skriv "main" under "Branch name pattern"
+4. Kryss av "Require a pull request before merging"
+5. Kryss av "Require approvals"
+6. Sett "Required number of approvals before merging" til "1"
+7. Kryss av "Require status checks to pass before merging"
+8. Søk etter og legg til "build" fra input-feltet under
