@@ -1,5 +1,6 @@
 package no.shoppifly;
 
+import io.micrometer.core.annotation.Timed;
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,8 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController()
@@ -17,8 +20,10 @@ public class ShoppingCartController implements ApplicationListener<ApplicationRe
 
     private MeterRegistry meterRegistry;
 
-    public ShoppingCartController(CartService cartService) {
+    @Autowired
+    public ShoppingCartController(CartService cartService, MeterRegistry meterRegistry) {
         this.cartService = cartService;
+        this.meterRegistry = meterRegistry;
     }
 
     @GetMapping(path = "/cart/{id}")
@@ -31,8 +36,10 @@ public class ShoppingCartController implements ApplicationListener<ApplicationRe
      *
      * @return an order ID
      */
+    @Timed("checkout_latency")
     @PostMapping(path = "/cart/checkout")
     public String checkout(@RequestBody Cart cart) {
+        meterRegistry.counter("checkouts").increment(1);
         return cartService.checkout(cart);
     }
 
@@ -60,8 +67,22 @@ public class ShoppingCartController implements ApplicationListener<ApplicationRe
     @Override
     public void onApplicationEvent(ApplicationReadyEvent applicationReadyEvent) {
 
-        // Verdi av total
-        Gauge.builder("account_count", cartService,
+        // antall carts
+        Gauge.builder("carts", cartService,
                 c -> c.getAllsCarts().size()).register(meterRegistry);
+        // Verdi i alle carts
+        // 1030; This works, but it's terrible code. Should definitely be refactored to streams. I'm going to move on to something completely different instead.
+        Gauge.builder("cartsvalue", cartService,
+                cartService -> {
+                    var sum = 0;
+                    for (String allCart : cartService.getAllsCarts()) {
+                        var currentCart = cartService.getCart(allCart);
+                        for (Item currentItem : currentCart.getItems()) {
+                            sum += currentItem.getQty() * currentItem.getUnitPrice();
+                        }
+                    }
+                return sum;
+                })
+                .register(meterRegistry);
     }
 }
