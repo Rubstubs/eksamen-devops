@@ -7,7 +7,7 @@ Q: Hva er utfordringene med dagens systemutviklingsprosess -
 og hvordan vil innføring av DevOps kunne være med på å løse disse?
 Hvilke DevOps prinsipper blir brutt?
 
-A:
+A: Her svarer jeg på spørsmål
 
 ---
 Q: En vanlig respons på mange feil under release av ny funksjonalitet er å gjøre det mindre hyppig,
