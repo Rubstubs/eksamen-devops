@@ -14,7 +14,7 @@ Q: En vanlig respons på mange feil under release av ny funksjonalitet er å gj�
 og samtidig forsøke å legge på mer kontroll og QA. Hva er problemet med dette ut ifra et DevOps perspektiv, og hva kan
 være en bedre tilnærming?
 
-A:
+A: Her også
 
 ---
 Q: Teamet overleverer kode til en annen avdelng som har ansvar for drift - hva er utfordringen med dette ut ifra et
