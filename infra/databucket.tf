@@ -2,7 +2,9 @@
 # What?!?!?!
 resource "aws_s3_bucket" "analyticsbucket" {
   bucket = "analytics-${var.candidate_id}"
-  versioning {
-    status = true
+  acl    = "private"
+
+  versioning = {
+    enabled = true
   }
 }
