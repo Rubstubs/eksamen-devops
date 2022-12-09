@@ -58,7 +58,11 @@ Konklusjon: Workflowen feilet fordi den manglet secrets med login til dockerhub.
 Jeg la til en backend S3 bucket for å lagre terraform filene i. 
 Når Terraform da skal kjøre så ser den over hva som finnes, og gjør kun det som må til.
 
-Jeg er litt usikker på hvorfor det S3 bøtta trengte versjonering. Byttet ut aws_s3_bucket med aws_s3_bucket_versioning og la til
+Jeg er litt usikker på hvorfor, men jeg løste denne feilmeldingen:
+```text
+Error: creating Amazon S3 (Simple Storage) Bucket (analytics-1030): BucketAlreadyOwnedByYou: Your previous request to create the named bucket succeeded and you already own it.
+```
+ved å bytte ut aws_s3_bucket med aws_s3_bucket_versioning og legge til
 versioning_configuration {
    status = "Enabled"
 }
