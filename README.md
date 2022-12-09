@@ -60,5 +60,5 @@ Når Terraform da skal kjøre så ser den over hva som finnes, og gjør kun det 
 
 Jeg er litt usikker på hvorfor det S3 bøtta trengte versjonering. Byttet ut aws_s3_bucket med aws_s3_bucket_versioning og la til
 versioning_configuration {
-status = "Enabled"
+   status = "Enabled"
 }
