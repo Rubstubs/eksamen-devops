@@ -1,5 +1,7 @@
-# Jim; this jssust fails ... commented it out ! We need to figure this out later, starting new task instead...
 
-#resource "aws_s3_bucket" "analyticsbucket" {
-#  bucket = "analytics-${var.candidate_id}"
-#}
+resource "aws_s3_bucket_versioning" "analyticsbucket" {
+  bucket = "analytics-${var.candidate_id}"
+  versioning_configuration {
+    status = "Enabled"
+  }
+}

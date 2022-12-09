@@ -1,7 +1,9 @@
 variable "candidate_id" {
-  type = string
+  type    = string
+  default = "1030"
 }
 
-variable "candidate_email"  {
-  type = string
+variable "candidate_email" {
+  type    = string
+  default = "ruca002@student.kristiania.no"
 }

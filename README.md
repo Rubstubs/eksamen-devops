@@ -1,6 +1,6 @@
 # eksamen-devops
 
-Del 1 DevOps-prinsipper
+## Del 1 DevOps-prinsipper
 
 ---
 Q: Hva er utfordringene med dagens systemutviklingsprosess -
@@ -30,3 +30,39 @@ redusere eller fjerne risiko ved hyppige leveraner.
 A:
 
 ---
+
+## Del 2
+### Oppgave 3
+1. Gå inn på "Settings" -> "Branches" -> "Add branch protection rule"  
+3. Skriv "main" under "Branch name pattern"
+4. Kryss av "Require a pull request before merging"
+5. Kryss av "Require approvals"
+6. Sett "Required number of approvals before merging" til "1"
+7. Kryss av "Require status checks to pass before merging"
+8. Søk etter og legg til "build" fra input-feltet under
+
+## del 3
+### Oppgave 1
+1. Opprett Access Token på Dockerhub
+2. Opprett secrets i github repoet:
+    - DOCKER_HUB_USERNAME: brukernavn på dockerhub
+    - DOCKER_HUB_TOKEN: token som nettopp ble opprettet
+Konklusjon: Workflowen feilet fordi den manglet secrets med login til dockerhub.
+
+### Oppgave 3
+1. Opprett et AWS ECR repository. 
+2. I filen docker.yml: bytt ut "1030" med navnet på repositoriet du nettopp opprettet. 
+
+## Del 5
+### Oppgave 1
+Jeg la til en backend S3 bucket for å lagre terraform filene i. 
+Når Terraform da skal kjøre så ser den over hva som finnes, og gjør kun det som må til.
+
+Jeg er litt usikker på hvorfor, men jeg løste denne feilmeldingen:
+```text
+Error: creating Amazon S3 (Simple Storage) Bucket (analytics-1030): BucketAlreadyOwnedByYou: Your previous request to create the named bucket succeeded and you already own it.
+```
+ved å bytte ut aws_s3_bucket med aws_s3_bucket_versioning og legge til
+versioning_configuration {
+   status = "Enabled"
+}
