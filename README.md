@@ -55,4 +55,7 @@ Konklusjon: Workflowen feilet fordi den manglet secrets med login til dockerhub.
 
 ## Del 5
 ### Oppgave 1
-Fordi terraformen ikke blir lagret i en egen s3 bucket?
+S3 bøtta trengte versjonering. Byttet ut aws_s3_bucket med aws_s3_bucket_versioning og la til
+versioning_configuration {
+status = "Enabled"
+}
