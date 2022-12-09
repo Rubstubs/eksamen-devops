@@ -52,3 +52,7 @@ Konklusjon: Workflowen feilet fordi den manglet secrets med login til dockerhub.
 ### Oppgave 3
 1. Opprett et AWS ECR repository. 
 2. I filen docker.yml: bytt ut "1030" med navnet på repositoriet du nettopp opprettet. 
+
+## Del 5
+### Oppgave 1
+Fordi ikke noe er definert??
