@@ -2,7 +2,5 @@
 # What?!?!?!
 resource "aws_s3_bucket" "analyticsbucket" {
   bucket = "analytics-${var.candidate_id}"
-  versioning {
-    status = "Enabled"
-  }
+  aws_s3_bucket_versioning = true
 }
