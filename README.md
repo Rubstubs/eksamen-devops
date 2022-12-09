@@ -55,7 +55,10 @@ Konklusjon: Workflowen feilet fordi den manglet secrets med login til dockerhub.
 
 ## Del 5
 ### Oppgave 1
-S3 bøtta trengte versjonering. Byttet ut aws_s3_bucket med aws_s3_bucket_versioning og la til
+Jeg la til en backend S3 bucket for å lagre terraform filene i. 
+Når Terraform da skal kjøre så ser den over hva som finnes, og gjør kun det som må til.
+
+Jeg er litt usikker på hvorfor det S3 bøtta trengte versjonering. Byttet ut aws_s3_bucket med aws_s3_bucket_versioning og la til
 versioning_configuration {
 status = "Enabled"
 }
