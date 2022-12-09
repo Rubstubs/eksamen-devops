@@ -55,4 +55,4 @@ Konklusjon: Workflowen feilet fordi den manglet secrets med login til dockerhub.
 
 ## Del 5
 ### Oppgave 1
-Fordi ikke noe er definert??
+Fordi terraformen ikke blir lagret i en egen s3 bucket?
